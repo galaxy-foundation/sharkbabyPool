@@ -65,6 +65,11 @@
   word-break: break-all;
   min-height: 260px;
   transition: all 0.3s;
+  color: white;
+  font-Family: "Comic Sans MS";
+  padding: 30px;
+  border-radius : 20px;
+
 }
 
 @media (max-width: 700px) {
@@ -146,4 +151,12 @@
   color: rgb(199, 146, 0);
   font-family: sans-serif;
   font-weight: bold;
+}
+
+.font-h2 {
+  font-size: 130%!important;
+}
+
+.padding-left {
+  padding-left:10px;
 }
