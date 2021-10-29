@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Grid, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import logo from "../components/assets/img/logo.png";
-import {useWallet} from 'use-wallet';
-import {ethers} from "ethers";
-import imgMetamask from '../components/assets/metamask.svg';
+import { useWallet } from "use-wallet";
+import { ethers } from "ethers";
+import imgMetamask from "../components/assets/metamask.svg";
 
 const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  textAlign: "center",
-  background: "transparent",
-  boxShadow: "none",
+	...theme.typography.body2,
+	textAlign: "center",
+	background: "transparent",
+	boxShadow: "none",
 }));
 
 export default function Header() {
 	const [mobileView, setMobileView] = useState(false);
 	const [drowdownFlag, setDrowdownFlag] = useState(false);
+
 	useEffect(() => {
 		const setResponsiveness = () => {
-		return window.innerWidth < 1000
-			? setMobileView(true)
-			: setMobileView(false);
+			return window.innerWidth < 1000
+				? setMobileView(true)
+				: setMobileView(false);
 		};
 
 		setResponsiveness();
@@ -34,181 +34,218 @@ export default function Header() {
 	}
 
 	/* ------------ connect wallet --------------*/
-	
-	const wallet = useWallet();
-	var styledAddress =wallet.account? wallet.account.slice(0,4)+".."+wallet.account.slice(-4):"";
 
-		//check connection
-	const handleChainChanged = (chainId)=>{
-		let {ethereum} = window;
-		if(ethereum.isConnected()&&Number(chainId) === 4002){
+	const wallet = useWallet();
+	var styledAddress = wallet.account
+		? wallet.account.slice(0, 4) + "..." + wallet.account.slice(-4)
+		: "";
+
+	//check connection
+	const handleChainChanged = (chainId) => {
+		let { ethereum } = window;
+		if (ethereum.isConnected() && Number(chainId) === 4002) {
 			onConnect();
 		}
-	}
+	};
 
-    React.useEffect(()=>{
-        checkConnection();
-    },[])
+	React.useEffect(() => {
+		checkConnection();
+	}, []);
 
-	const checkConnection =async ()=>{
-		let {ethereum} = window;
-		if(ethereum!==undefined){
-			const chainId = await ethereum.request({ method: 'eth_chainId' });
+	const checkConnection = async () => {
+		let { ethereum } = window;
+		if (ethereum !== undefined) {
+			const chainId = await ethereum.request({ method: "eth_chainId" });
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
 			const accounts = await provider.listAccounts();
-			if(accounts.length!==0&&Number(chainId) === 4002){
+			if (accounts.length !== 0 && Number(chainId) === 4002) {
 				onConnect();
 			}
-			ethereum.on('chainChanged', handleChainChanged);
+			ethereum.on("chainChanged", handleChainChanged);
 		}
-	}
+	};
 
 	const onConnect = () => {
-        if(wallet.status!=="connected"){
-            wallet.connect().catch((err) => {
-                alert("please check metamask!")
-            });
-        }
-    }
+		if (wallet.status !== "connected") {
+			wallet.connect().catch((err) => {
+				alert("please check metamask!");
+			});
+		}
+	};
 
 	return (
-		<div style={{ background: "rgb(10, 77, 170)" }}>
-		{!mobileView ? (
-			<Grid
-			container
-			direction="row"
-			justifyContent="center"
-			alignItems="center"
-			columns={14}
-			spacing={5}
-			>
-			<Grid item xl={3} lg={3} md={3} sm={12}>
-				<Item>
-					<img src={logo} className="logo-img noselect" alt="NoImg" />
-				</Item>
-			</Grid>
-			<Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-				<Item>
-				<Link to="" className="menubutton noselect">
-					Staking
-				</Link>
-				</Item>
-			</Grid>
-			<Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-				<Item>
-				<Link to="" className="menubutton noselect">
-					Unstaking
-				</Link>
-				</Item>
-			</Grid>
-			<Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-				<Item>
-				<Link to="" className="menubutton noselect">
-					Launchpad
-				</Link>
-				</Item>
-			</Grid>
-			<Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-				<Item>
-				<Link to="" className="menubutton noselect">
-					Website
-				</Link>
-				</Item>
-			</Grid>
-			<Grid item md={3} sm={6} xs={12}>
-				<Item>
-					{ wallet.status === "connected" ? (
-						<button className="connectbutton noselect" style={{textTransform:'none'}}>
-							{styledAddress}
-						</button>
-					) : (
-						<button onClick={()=>onConnect()} className="connectbutton noselect" style={{textTransform:'none'}}>
-							{wallet.status === "connecting"? (
-								<div>
-								<span className="spinner-border" role="status" style={{width:"1.5em",height:"1.5em",marginRight:10}}>
-							  	</span>
-								<span className="sr-only ">Loading...</span>
-								</div>
+		<div>
+			<br />
+			{!mobileView ? (
+				<Grid
+					container
+					direction="row"
+					justifyContent="center"
+					alignItems="center"
+					columns={14}
+					spacing={5}>
+					<Grid item xl={3} lg={3} md={3} sm={12} className="logo">
+						<Item>
+							<img
+								src={logo}
+								className="logo-img noselect"
+								alt="NoImg"
+							/>
+							<span
+								style={{
+									color: "white",
+									fontSize: "30px",
+									fontWeight: "bold",
+									paddingTop: "10px",
+								}}
+								className="noselect">
+								Shark<b style={{ color: "#ffa94d" }}>baby</b>
+							</span>
+						</Item>
+					</Grid>
+					<Grid item xl={1} lg={2} md={2} sm={12} xs={12}></Grid>
+					<Grid item xl={1} lg={2} md={2} sm={12} xs={12}></Grid>
+					<Grid item xl={1} lg={2} md={2} sm={12} xs={12}></Grid>
+					<Grid item xl={1} lg={2} md={2} sm={12} xs={12}></Grid>
+					<Grid item md={3} sm={6} xs={12}>
+						<Item>
+							{wallet.status === "connected" ? (
+								<button
+									className="connectbutton noselect"
+									style={{ textTransform: "none" }}>
+									{styledAddress}
+								</button>
 							) : (
-								<div>
-								<img src={imgMetamask} alt="wallet" style={{width:"1.5em",height:"1.5em",marginRight:10}} />
-									Connect
-								</div>
-							) }  
-						</button>
-					) }
-				</Item>
-			</Grid>
-			</Grid>
-		) : (
-			<Grid
-			contanier
-			direction="row"
-			justifyContent="center"
-			alignItems="center"
-			>
-			<Grid item sm={12} xs={12}>
-				<Grid container justifyContent="center" alignItems="center">
-					<Grid item sm={2} xs={2}>
-						<img
-						src={logo}
-						className="mobile-logo-img noselect"
-						alt="NoImg"
-						/>
-					</Grid>
-					<Grid item sm={8} xs={8}></Grid>
-					<Grid item sm={2} xs={2} onClick={mobileMenuButton}>
-						<div className="mobile-container">
-						<div className="mobile-bar1"></div>
-						<div className="mobile-bar2"></div>
-						<div className="mobile-bar3"></div>
-						</div>
+								<button
+									onClick={() => onConnect()}
+									className="connectbutton noselect"
+									style={{ textTransform: "none" }}>
+									{wallet.status === "connecting" ? (
+										<div>
+											<span
+												className="spinner-border"
+												role="status"
+												style={{
+													width: "1.5em",
+													height: "1.5em",
+													marginRight: 10,
+												}}></span>
+											<span className="sr-only ">
+												Loading...
+											</span>
+										</div>
+									) : (
+										<div>
+											<img
+												src={imgMetamask}
+												alt="wallet"
+												style={{
+													width: "1.5em",
+													height: "1.5em",
+													marginRight: 10,
+												}}
+											/>
+											Connect
+										</div>
+									)}
+								</button>
+							)}
+						</Item>
 					</Grid>
 				</Grid>
-				{drowdownFlag ? (
-				<Grid container justifyContent="center" alignItems="center">
-					<Grid item sm={6} xs={12}>
-					<Item>
-						<Link to="" className="mobile-menubutton noselect">
-						Staking
-						</Link>
-					</Item>
-					</Grid>
-					<Grid item sm={6} xs={12}>
-					<Item>
-						<Link to="" className="mobile-menubutton noselect">
-						Unstaking
-						</Link>
-					</Item>
-					</Grid>
-					<Grid item sm={6} xs={12}>
-					<Item>
-						<Link to="" className="mobile-menubutton noselect">
-						Launchpad
-						</Link>
-					</Item>
-					</Grid>
-					<Grid item sm={6} xs={12}>
-					<Item>
-						<Link to="" className="mobile-menubutton noselect">
-						Website
-						</Link>
-					</Item>
-					</Grid>
+			) : (
+				<Grid
+					contanier
+					direction="row"
+					justifyContent="center"
+					alignItems="center">
 					<Grid item sm={12} xs={12}>
-					<Item>
-						<button className="mobile-connectbutton noselect">
-						Connect Wallet
-						</button>
-					</Item>
+						<Grid
+							container
+							justifyContent="center"
+							alignItems="center">
+							<Grid item sm={2} xs={2}>
+								<img
+									src={logo}
+									className="mobile-logo-img noselect"
+									alt="NoImg"
+								/>
+							</Grid>
+							<Grid item sm={8} xs={8}></Grid>
+							<Grid item sm={2} xs={2} onClick={mobileMenuButton}>
+								<div className="mobile-container">
+									<div className="mobile-bar1"></div>
+									<div className="mobile-bar2"></div>
+									<div className="mobile-bar3"></div>
+								</div>
+							</Grid>
+						</Grid>
+						{drowdownFlag ? (
+							<Grid
+								container
+								justifyContent="center"
+								alignItems="center">
+								<Grid item sm={6} xs={12}></Grid>
+								<Grid item sm={6} xs={12}></Grid>
+								<Grid item sm={6} xs={12}></Grid>
+								<Grid item sm={6} xs={12}></Grid>
+								<Grid item sm={12} xs={12}>
+									<Item>
+										{wallet.status === "connected" ? (
+											<button
+												className="mobile-connectbutton noselect"
+												style={{
+													textTransform: "none",
+												}}>
+												{styledAddress}
+											</button>
+										) : (
+											<button
+												onClick={() => onConnect()}
+												className="mobile-connectbutton noselect"
+												style={{
+													textTransform: "none",
+												}}>
+												{wallet.status ===
+												"connecting" ? (
+													<div>
+														<span
+															className="spinner-border"
+															role="status"
+															style={{
+																width: "1.5em",
+																height: "1.5em",
+																marginRight: 10,
+															}}></span>
+														<span className="sr-only ">
+															Loading...
+														</span>
+													</div>
+												) : (
+													<div>
+														<img
+															src={imgMetamask}
+															alt="wallet"
+															style={{
+																width: "1.5em",
+																height: "1.5em",
+																marginRight: 10,
+															}}
+														/>
+														Connect
+													</div>
+												)}
+											</button>
+										)}
+									</Item>
+								</Grid>
+							</Grid>
+						) : (
+							""
+						)}
 					</Grid>
 				</Grid>
-				) : (
-              ""
-            )}
-          </Grid>
-        </Grid>
-      )}
-    </div>
-  );
+			)}
+		</div>
+	);
 }
