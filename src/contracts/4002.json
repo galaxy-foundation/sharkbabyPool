@@ -1,6 +1,6 @@
 {
     "sharkbabyToken": {
-        "address": "0x224c895D57Da25Ef2533fF98713963FE65d4EC66",
+        "address": "0x11f2eA865bA79800B0BAc43878d3cf6db080A80c",
         "abi": [
             {
                 "inputs": [],
@@ -798,7 +798,7 @@
         ]
     },
     "stakingTokenPool": {
-        "address": "0x63A805E22F8019A6C63c76f5c4Ef2F55e0957f2e",
+        "address": "0xDd39C46f56515b68aB6E3626606bFc869B1F1687",
         "abi": [
             {
                 "inputs": [
@@ -1117,6 +1117,19 @@
             },
             {
                 "inputs": [],
+                "name": "marketingAddress",
+                "outputs": [
+                    {
+                        "internalType": "address",
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
                 "name": "owner",
                 "outputs": [
                     {
@@ -1179,6 +1192,11 @@
                     {
                         "internalType": "address",
                         "name": "_RouterAddress",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "_marketingAddress",
                         "type": "address"
                     }
                 ],

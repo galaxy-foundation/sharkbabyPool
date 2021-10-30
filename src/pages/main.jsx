@@ -42,9 +42,15 @@ export default function Main() {
 					wallet.connect();
 				}
 			}
-			setAllStakeBalance(await getAllStakeBalance());
-			setStakeNum(await getSkakers());
-			setApy(await getAPY());
+			getAllStakeBalance().then((res)=>{
+				setAllStakeBalance(res);
+			});
+			getSkakers().then((res)=>{
+				setStakeNum(res);
+			});
+			getAPY().then((res)=>{
+				setApy(res);
+			});
 		}
 		checkConnection();
 	}, []);
@@ -53,9 +59,18 @@ export default function Main() {
 		async function getData() {
 			if (wallet.status === "connected") {
 				try {
-					setMybalance(await getBalance(wallet.account));
-					setMystakebalance(await getStakeBalance(wallet.account));
-					setRewordBalance(await getRewords(wallet.account));
+					getBalance(wallet.account).then((res)=>{
+						setMybalance(res);
+					});
+
+					getStakeBalance(wallet.account).then((res)=>{
+						setMystakebalance(res);
+					});
+
+					getRewords(wallet.account).then((res)=>{
+						setRewordBalance(res);
+					});
+
 				} catch (err) {
 					console.log(err);
 				}
