@@ -88,7 +88,7 @@ const StakingCards = (props) => {
 			spacing={20}>
 			<Grid item>
 				<div className="amountpanel">
-					<h1 className="font-h2">Shake your ADAPAD</h1>
+					<h1 className="font-h2">Shake your SHARKBABY</h1>
 					<br />
 					<Item className="amountinput">
 						<div className="input-group">

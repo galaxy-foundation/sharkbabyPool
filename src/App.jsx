@@ -9,7 +9,7 @@ function App() {
 			chainId={4002}
 			connectors={{
 				// This is how connectors get configured
-				portis: { dAppId: "my-dapp-id-123-xyz" },
+				portis: { dAppId: "sharkbaby" },
 			}}>
 			<Routes />
 		</UseWalletProvider>

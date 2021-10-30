@@ -26,8 +26,8 @@ export const getStakeBalance = async (account) => {
 
 export const getAllStakeBalance = async () => {
 	try {
-		var tx = await SharkbabyToken.balanceOf(StakingTokenPool.address);
-		// var tx = await StakingTokenPool.totalStakingAmount();
+		// var tx = await SharkbabyToken.balanceOf(StakingTokenPoosl.address);
+		var tx = await StakingTokenPool.totalStakingAmount();
 		var allstakebalance = ethers.utils.formatUnits(tx);
 		return Number(allstakebalance).toFixed(3);
 	} catch (err) {
