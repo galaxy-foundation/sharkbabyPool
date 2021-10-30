@@ -73,6 +73,12 @@ export default function Header() {
 		}
 	};
 
+	const disconnect = () => {
+		if (wallet.status === "connected") {
+			wallet.reset();
+		}
+	};
+
 	return (
 		<div>
 			<br />
@@ -111,8 +117,18 @@ export default function Header() {
 							{wallet.status === "connected" ? (
 								<button
 									className="connectbutton noselect"
-									style={{ textTransform: "none" }}>
-									{styledAddress}
+									style={{ textTransform: "none" }}
+									onClick={disconnect}>
+									<img
+										src={imgMetamask}
+										alt="wallet"
+										style={{
+											width: "1.5em",
+											height: "1.5em",
+											marginRight: 10,
+										}}
+									/>
+									Disconnect
 								</button>
 							) : (
 								<button
@@ -204,8 +220,18 @@ export default function Header() {
 												className="mobile-connectbutton noselect"
 												style={{
 													textTransform: "none",
-												}}>
-												{styledAddress}
+												}}
+												onClick={disconnect}>
+												<img
+													src={imgMetamask}
+													alt="wallet"
+													style={{
+														width: "1.5em",
+														height: "1.5em",
+														marginRight: 10,
+													}}
+												/>
+												Disconnect
 											</button>
 										) : (
 											<button
