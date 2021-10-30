@@ -84,7 +84,7 @@
 }
 
 .css-1ttgalp-MuiGrid-root {
-	width: 100%!important;
+	width: 100% !important;
 }
 
 .css-13i4rnv-MuiGrid-root {
@@ -162,6 +162,43 @@
 	border: none;
 	border-radius: 20px;
 	padding: 1.5% 20px;
+}
+
+.checkpop {
+	background: transparent;
+	background-image: url("../img/popback.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.stakingAceeptButton {
+	margin-left: 10%!important;
+	width: 80%;
+	border-radius: 30px;
+}
+
+.pop_section1 {
+	background-color: rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	width: 100;
+	padding: 30px;
+	color: #e8ac28;
+	font-size: 25px;
+	word-break: keep-all;
+	text-align: center;
+}
+
+.pop_section2 {
+	padding: 10px 5%;
+	font-size: 25px;
+	font-family: sans-serif;
+	color: black !important;
+	width: 100%;
+}
+
+.pop_section2 span {
+	float: right !important;
+	font-weight: bold;
 }
 
 .withdraw {

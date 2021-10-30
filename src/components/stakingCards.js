@@ -1,5 +1,15 @@
-import React, { useState } from "react";
-import { Grid, Paper } from "@mui/material";
+import React, { useState, forwardRef } from "react";
+import {
+	Grid,
+	Paper,
+	Slide,
+	Button,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useWallet } from "use-wallet";
 import { ethers } from "ethers";
@@ -12,6 +22,11 @@ import {
 	getSkakers,
 	getAPY,
 } from "../components/getData";
+import WarningIcon from "@mui/icons-material/Warning";
+
+const Transition = forwardRef(function Transition(props, ref) {
+	return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export const Item = styled(Paper)(({ theme }) => ({
 	...theme.typography.body2,
@@ -36,10 +51,18 @@ const StakingCards = (props) => {
 
 	const wallet = useWallet();
 	const [amount, setAmount] = useState(0);
-	const [allMoney, setAllMoney] = useState(0);
+	const [open, setOpen] = useState(false);
 
 	const handleChange = (e) => {
 		setAmount(e.target.value);
+	};
+
+	const handleClickOpen = () => {
+		if (wallet.status === "connected") setOpen(true);
+	};
+
+	const handleClose = () => {
+		setOpen(false);
 	};
 
 	const handleStacking = async () => {
@@ -79,46 +102,90 @@ const StakingCards = (props) => {
 	};
 
 	return (
-		<Grid
-			container
-			direction="row"
-			justifyContent="center"
-			alignItems="center">
-			<Grid item>
-				<div className="amountpanel">
-					<h1 className="font-h2">Shake your SHARKBABY</h1>
-					<br />
-					<Item className="amountinput">
-						<div className="input-group">
-							<input
-								type="number"
-								min="0"
-								className="form-control"
-								placeholder="Enter Amount"
-								onChange={handleChange}
-								value={amount}
-							/>
-							<button
-								className="input-group-text"
-								onClick={handleall}>
-								Max
-							</button>
-						</div>
-						<p
-							style={{
-								float: "right",
-							}}>
-							<label>Balance:&nbsp;{mybalance}</label>
-						</p>
-					</Item>
-					<button
-						onClick={handleStacking}
-						className="stackbutton stakeM">
-						stack
-					</button>
-				</div>
+		<div>
+			<Grid
+				container
+				direction="row"
+				justifyContent="center"
+				alignItems="center">
+				<Grid item>
+					<div className="amountpanel">
+						<h1 className="font-h2">Shake your SHARKBABY</h1>
+						<br />
+						<Item className="amountinput">
+							<div className="input-group">
+								<input
+									type="number"
+									min="0"
+									className="form-control"
+									placeholder="Enter Amount"
+									onChange={handleChange}
+									value={amount}
+								/>
+								<button
+									className="input-group-text"
+									onClick={handleall}>
+									Max
+								</button>
+							</div>
+							<p
+								style={{
+									float: "right",
+								}}>
+								<label>Balance:&nbsp;{mybalance}</label>
+							</p>
+						</Item>
+						<button
+							onClick={handleClickOpen}
+							className="stackbutton stakeM">
+							stack
+						</button>
+					</div>
+				</Grid>
 			</Grid>
-		</Grid>
+			<Dialog
+				open={open}
+				TransitionComponent={Transition}
+				keepMounted
+				maxWidth="sm"
+				fullWidth="fullWidth"
+				onClose={handleClose}>
+				<div className="checkpop">
+					<DialogContent>
+						<DialogTitle></DialogTitle>
+						<DialogContentText id="alert-dialog-slide-description">
+							<div className="pop_section1">
+								<WarningIcon />
+								You may be subject to a fee if you wish to
+								unstake & withdraw your SHARKBABY tokens early
+							</div>
+							<div className="pop_section2">
+								<label>Less than 6 weeks</label>
+								<span>25.00%</span>
+								<br />
+								<label>6 weeks or more</label>
+								<span>0.00%</span>
+							</div>
+							<div style={{ textAlign: "center" }}>
+								<h5>
+									Please click 'Next' if you wish to proceed.
+								</h5>
+							</div>
+							<div>
+								<Button
+									size="large"
+									color="success"
+									variant="contained"
+									className="stakingAceeptButton"
+									onClick={handleStacking}>
+									Accept
+								</Button>
+							</div>
+						</DialogContentText>
+					</DialogContent>
+				</div>
+			</Dialog>
+		</div>
 	);
 };
 
