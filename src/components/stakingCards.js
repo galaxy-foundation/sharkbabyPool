@@ -39,7 +39,7 @@ const StakingCards = (props) => {
 	const [allMoney, setAllMoney] = useState(0);
 
 	const handleChange = (e) => {
-		if (wallet.status === "connected") setAmount(e.target.value);
+		setAmount(e.target.value);
 	};
 
 	const handleStacking = async () => {
@@ -75,8 +75,7 @@ const StakingCards = (props) => {
 	};
 
 	const handleall = async () => {
-		wallet.status === "connected" ? setAllMoney(mybalance) : setAllMoney(0);
-		console.log(allMoney);
+		wallet.status === "connected" ? setAmount(mybalance) : setAmount(0);
 	};
 
 	return (
@@ -84,8 +83,7 @@ const StakingCards = (props) => {
 			container
 			direction="row"
 			justifyContent="center"
-			alignItems="center"
-			spacing={20}>
+			alignItems="center">
 			<Grid item>
 				<div className="amountpanel">
 					<h1 className="font-h2">Shake your SHARKBABY</h1>
@@ -98,6 +96,7 @@ const StakingCards = (props) => {
 								className="form-control"
 								placeholder="Enter Amount"
 								onChange={handleChange}
+								value={amount}
 							/>
 							<button
 								className="input-group-text"

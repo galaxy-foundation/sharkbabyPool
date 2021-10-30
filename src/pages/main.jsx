@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Grid } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { useWallet } from "use-wallet";
 import { ethers } from "ethers";
 import InfoCards from "../components/infoCards";
@@ -13,6 +14,13 @@ import {
 	getSkakers,
 	getAPY,
 } from "../components/getData";
+
+export const Item = styled(Paper)(({ theme }) => ({
+	...theme.typography.body2,
+	textAlign: "center",
+	background: "transparent",
+	boxShadow: "none",
+}));
 
 export default function Main() {
 	const wallet = useWallet();
@@ -63,39 +71,46 @@ export default function Main() {
 				container
 				direction="row"
 				justifyContent="center"
-				alignItems="center"
-				spacing={5}>
-				<Grid item xl={8}>
-					<InfoCards
-						allstakebalance={allstakebalance}
-						stakeNum={stakeNum}
-						apy={apy}
-					/>
-					<div style={{ height: "5vh" }}></div>
-					<StakingCards
-						setMystakebalance={setMystakebalance}
-						mystakebalance={mystakebalance}
-						setMybalance={setMybalance}
-						mybalance={mybalance}
-						setAllStakeBalance={setAllStakeBalance}
-						setRewordBalance={setRewordBalance}
-						setStakeNum={setStakeNum}
-						setApy={setApy}
-					/>
-					<br />
-					<br />
+				alignItems="center">
+				<Grid item sm={12} xl={8}>
+					<Item>
+						<InfoCards
+							allstakebalance={allstakebalance}
+							stakeNum={stakeNum}
+							apy={apy}
+						/>
+						<div style={{ height: "5vh" }}></div>
+						<StakingCards
+							setMystakebalance={setMystakebalance}
+							mystakebalance={mystakebalance}
+							setMybalance={setMybalance}
+							mybalance={mybalance}
+							setAllStakeBalance={setAllStakeBalance}
+							setRewordBalance={setRewordBalance}
+							setStakeNum={setStakeNum}
+							setApy={setApy}
+						/>
+						<br />
+						<br />
+					</Item>
 				</Grid>
-				<Grid item xl={4}>
-					<StakeInfo
-						setAllStakeBalance={setAllStakeBalance}
-						setMybalance={setMybalance}
-						setMystakebalance={setMystakebalance}
-						mystakebalance={mystakebalance}
-						setRewordBalance={setRewordBalance}
-						rewordBalance={rewordBalance}
-						setStakeNum={setStakeNum}
-						setApy={setApy}
-					/>
+				<Grid item sm={12} xl={4}>
+					<Grid container justifyContent="center" alignItems="center">
+						<Grid item></Grid>
+						<Grid item>
+							<StakeInfo
+								setAllStakeBalance={setAllStakeBalance}
+								setMybalance={setMybalance}
+								setMystakebalance={setMystakebalance}
+								mystakebalance={mystakebalance}
+								setRewordBalance={setRewordBalance}
+								rewordBalance={rewordBalance}
+								setStakeNum={setStakeNum}
+								setApy={setApy}
+							/>
+						</Grid>
+						<Grid item></Grid>
+					</Grid>
 				</Grid>
 			</Grid>
 		</div>

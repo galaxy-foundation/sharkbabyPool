@@ -10,10 +10,10 @@ import "../components/assets/css/mobile.css";
 
 function Routes() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Route exact path="/" component={Main} />
-    </BrowserRouter>
+		<BrowserRouter>
+			<Header />
+			<Route exact path="/" component={Main} />
+		</BrowserRouter>
   );
 }
 

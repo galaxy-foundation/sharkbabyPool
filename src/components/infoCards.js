@@ -23,11 +23,10 @@ const InfoCards = (props) => {
 			justifyContent="center"
 			alignItems="center"
 			spacing={10}>
-			<Grid item xl={3} md={4}>
+			<Grid item xl={3} lg={2} md={3}>
 				<Item>
 					<div className="panel yellow">
 						Total SharkBaby shaked
-						<br />
 						<br />
 						<p>
 							{wallet.status === "connected"
@@ -37,21 +36,19 @@ const InfoCards = (props) => {
 					</div>
 				</Item>
 			</Grid>
-			<Grid item xl={3} md={4}>
+			<Grid item xl={3} lg={2} md={3}>
 				<Item>
 					<div className="panel red">
 						Number of Stakers
-						<br />
 						<br />
 						<p>{wallet.status === "connected" ? stakeNum : "0"}</p>
 					</div>
 				</Item>
 			</Grid>
-			<Grid item xl={3} md={4}>
+			<Grid item xl={3} lg={2} md={3}>
 				<Item>
 					<div className="panel blue">
 						APY
-						<br />
 						<br />
 						<p>
 							{wallet.status === "connected" && apy

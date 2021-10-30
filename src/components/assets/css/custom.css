@@ -48,7 +48,7 @@
 }
 
 .panel {
-	width: 25vh;
+	width: 100%;
 	height: 35vh;
 	background: rgb(10, 77, 170);
 	background-position: 50% 20%;
@@ -56,8 +56,9 @@
 	border-radius: 20px;
 	font-size: 20px;
 	font-family: sans-serif;
-	word-break: break-all;
+	word-break: keep-all;
 	min-width: 200px;
+	min-height: 250px;
 	transition: all 0.3s;
 	padding-top: 65%;
 }
@@ -82,23 +83,31 @@
 	background-image: url("../img/symbol3.png");
 }
 
+.css-1ttgalp-MuiGrid-root {
+	width: 100%!important;
+}
+
+.css-13i4rnv-MuiGrid-root {
+	padding-bottom: 20px;
+}
+
 .amountpanel {
 	width: 100%;
 	height: 25vh;
 	background: rgb(20, 67, 152);
-	word-break: break-all;
+	word-break: break;
 	min-height: 300px;
 	transition: all 0.3s;
 	color: white;
 	font-family: "Comic Sans MS";
-	padding: 60px 150px;
+	padding: 10% 20vh;
 	border-radius: 20px;
 }
 
 @media (max-width: 700px) {
 	.amountpanel {
 		text-align: center;
-		min-height: 350px;
+		min-height: 330px;
 	}
 	.amountinput > label {
 		transform: translate(0) !important;
@@ -110,7 +119,7 @@
 
 .stakedpanel {
 	display: block;
-	width: 40vh;
+	width: 50%;
 	min-width: 350px;
 	min-height: 600px;
 	background: #0c1a5a;
@@ -173,7 +182,7 @@
 }
 
 .input-group {
-	width: 100%;
+	width: 130%;
 	margin-left: 50%;
 	transform: translate(-50%);
 }
@@ -195,8 +204,8 @@
 
 .input-group-text {
 	position: absolute;
-	top: 4px;
-	right: 4px;
+	top: 1px;
+	right: 1px;
 	background: rgb(255, 105, 112);
 	border-radius: 30px !important;
 	padding: 10px 25px;
@@ -222,6 +231,7 @@
 	font-family: sans-serif;
 	text-align: center;
 	font-weight: bold;
+	font-size: 200%;
 }
 
 .padding-left {

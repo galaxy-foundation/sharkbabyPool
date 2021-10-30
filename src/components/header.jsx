@@ -172,7 +172,12 @@ export default function Header() {
 								/>
 							</Grid>
 							<Grid item sm={8} xs={8}></Grid>
-							<Grid item sm={2} xs={2} onClick={mobileMenuButton}>
+							<Grid
+								item
+								sm={2}
+								xs={2}
+								onClick={mobileMenuButton}
+								style={{ zIndex: "2000" }}>
 								<div className="mobile-container">
 									<div className="mobile-bar1"></div>
 									<div className="mobile-bar2"></div>
@@ -185,11 +190,15 @@ export default function Header() {
 								container
 								justifyContent="center"
 								alignItems="center">
-								<Grid item sm={6} xs={12}></Grid>
-								<Grid item sm={6} xs={12}></Grid>
-								<Grid item sm={6} xs={12}></Grid>
-								<Grid item sm={6} xs={12}></Grid>
-								<Grid item sm={12} xs={12}>
+								<Grid item xs={12} sm={6}></Grid>
+								<Grid item xs={12} sm={6}></Grid>
+								<Grid item xs={12} sm={6}></Grid>
+								<Grid item xs={12} sm={6}></Grid>
+								<Grid
+									item
+									xs={12}
+									sm={12}
+									style={{ zIndex: "1" }}>
 									<Item>
 										{wallet.status === "connected" ? (
 											<button
