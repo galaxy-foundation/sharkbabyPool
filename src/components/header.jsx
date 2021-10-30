@@ -94,9 +94,8 @@ export default function Header() {
 							<span
 								style={{
 									color: "white",
-									fontSize: "30px",
+									fontSize: "180%",
 									fontWeight: "bold",
-									paddingTop: "10px",
 								}}
 								className="noselect">
 								Shark<b style={{ color: "#ffa94d" }}>baby</b>
