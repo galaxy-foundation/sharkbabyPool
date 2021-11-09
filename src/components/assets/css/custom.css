@@ -172,6 +172,7 @@
 }
 
 .stakingAceeptButton {
+    margin-top: 30px !important;
 	margin-left: 10%!important;
 	width: 80%;
 	border-radius: 30px;
@@ -183,6 +184,18 @@
 	width: 100;
 	padding: 30px;
 	color: #e8ac28;
+	font-size: 25px;
+	word-break: keep-all;
+	text-align: center;
+}
+
+
+.pop_section1_1 {
+	background-color: rgba(0, 0, 0, 0.061);
+	border-radius: 10px;
+	width: 100;
+	padding: 30px;
+	color: #2ee828;
 	font-size: 25px;
 	word-break: keep-all;
 	text-align: center;
@@ -273,4 +286,9 @@
 
 .padding-left {
 	padding-left: 10px;
+}
+
+.text-h2 {
+    color: white;
+    font-size: 35px!important;
 }

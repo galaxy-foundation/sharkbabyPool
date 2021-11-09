@@ -1,6 +1,6 @@
 {
     "sharkbabyToken": {
-        "address": "0x11f2eA865bA79800B0BAc43878d3cf6db080A80c",
+        "address": "0x6bd50DC45bAc05cdE0533215cBE855099Dc1A130",
         "abi": [
             {
                 "inputs": [],
@@ -189,6 +189,32 @@
                 ],
                 "name": "Transfer",
                 "type": "event"
+            },
+            {
+                "inputs": [],
+                "name": "ICICBSwapRouter",
+                "outputs": [
+                    {
+                        "internalType": "contract IICICBSwapRouter",
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "ICICBSwapV2Pair",
+                "outputs": [
+                    {
+                        "internalType": "address",
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
             },
             {
                 "inputs": [],
@@ -509,32 +535,6 @@
             },
             {
                 "inputs": [],
-                "name": "pancakeswapRouter",
-                "outputs": [
-                    {
-                        "internalType": "contract IPancakeswapRouter",
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "pancakeswapV2Pair",
-                "outputs": [
-                    {
-                        "internalType": "address",
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
                 "name": "poolAddress",
                 "outputs": [
                     {
@@ -798,7 +798,7 @@
         ]
     },
     "stakingTokenPool": {
-        "address": "0xDd39C46f56515b68aB6E3626606bFc869B1F1687",
+        "address": "0x1508708704421fb700497DDD881192B37763f2A1",
         "abi": [
             {
                 "inputs": [
@@ -911,6 +911,19 @@
                         "internalType": "uint256",
                         "name": "",
                         "type": "uint256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "ICICBSwapRouter",
+                "outputs": [
+                    {
+                        "internalType": "contract IICICBSwapRouter",
+                        "name": "",
+                        "type": "address"
                     }
                 ],
                 "stateMutability": "view",
@@ -1143,19 +1156,6 @@
             },
             {
                 "inputs": [],
-                "name": "pancakeswapRouter",
-                "outputs": [
-                    {
-                        "internalType": "contract IPancakeswapRouter",
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
                 "name": "renounceOwnership",
                 "outputs": [],
                 "stateMutability": "nonpayable",
@@ -1211,6 +1211,11 @@
                         "internalType": "uint256",
                         "name": "amount",
                         "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "referrar",
+                        "type": "address"
                     }
                 ],
                 "name": "stake",
@@ -1255,9 +1260,9 @@
                 "name": "stakers",
                 "outputs": [
                     {
-                        "internalType": "address",
+                        "internalType": "uint256",
                         "name": "referal",
-                        "type": "address"
+                        "type": "uint256"
                     },
                     {
                         "internalType": "uint256",

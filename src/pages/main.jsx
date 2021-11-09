@@ -22,7 +22,8 @@ export const Item = styled(Paper)(({ theme }) => ({
 	boxShadow: "none",
 }));
 
-export default function Main() {
+export default function Main(props) {
+    const [referal,setReferal] = useState("0x0000000000000000000000000000000000000000")
 	const wallet = useWallet();
 	const [mystakebalance, setMystakebalance] = useState(0);
 	const [mybalance, setMybalance] = useState(0);
@@ -33,6 +34,7 @@ export default function Main() {
 
 	useEffect(() => {
 		async function checkConnection() {
+            
 			if (window.ethereum) {
 				const provider = new ethers.providers.Web3Provider(
 					window.ethereum
@@ -80,6 +82,13 @@ export default function Main() {
 		getData();
 	}, [wallet.status]);
 
+    useEffect(() => {
+        const queryParams = new URLSearchParams(window.location.search);
+        var referal = queryParams.get('r');
+        if(ethers.utils.isAddress(referal)){
+            setReferal(referal);
+        }
+    },[])
 	return (
 		<div style={{ paddingTop: "5%" }}>
 			<Grid
@@ -104,6 +113,7 @@ export default function Main() {
 							setRewordBalance={setRewordBalance}
 							setStakeNum={setStakeNum}
 							setApy={setApy}
+                            referal = {referal}
 						/>
 						<br />
 						<br />

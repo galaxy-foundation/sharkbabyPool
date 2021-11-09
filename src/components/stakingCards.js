@@ -47,6 +47,7 @@ const StakingCards = (props) => {
 		setRewordBalance,
 		setStakeNum,
 		setApy,
+        referal
 	} = props;
 
 	const wallet = useWallet();
@@ -65,7 +66,7 @@ const StakingCards = (props) => {
 		setOpen(false);
 	};
 
-	const handleStacking = async () => {
+	const handleStaking = async () => {
 		if (wallet.status === "connected") {
 			try {
 				var stakeAmont = ethers.utils.parseUnits(amount.toString(), 18);
@@ -80,10 +81,11 @@ const StakingCards = (props) => {
 					stakeAmont
 				);
 				await tx.wait();
-
 				var signedStakingTokenPool = StakingTokenPool.connect(signer);
-				tx = await signedStakingTokenPool.stake(stakeAmont);
+				tx = await signedStakingTokenPool.stake(stakeAmont,referal);
 				await tx.wait();
+                
+                setOpen(false);
 
 				setMybalance(await getBalance(wallet.account));
 				setMystakebalance(await getStakeBalance(wallet.account));
@@ -93,6 +95,7 @@ const StakingCards = (props) => {
 				setApy(await getAPY());
 			} catch (err) {
 				console.log(err);
+                setOpen(false);
 			}
 		}
 	};
@@ -177,7 +180,7 @@ const StakingCards = (props) => {
 									color="success"
 									variant="contained"
 									className="stakingAceeptButton"
-									onClick={handleStacking}>
+									onClick={handleStaking}>
 									Accept
 								</Button>
 							</div>
