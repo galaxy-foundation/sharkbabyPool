@@ -32,6 +32,7 @@ export const getAllStakeBalance = async () => {
 		return Number(allstakebalance).toFixed(3);
 	} catch (err) {
 		console.log(err);
+        return 0;
 	}
 };
 
@@ -58,6 +59,7 @@ export const getSkakers = async () => {
 		return Number(stakeNum);
 	} catch (err) {
 		console.log(err);
+        return 0;
 	}
 };
 
@@ -68,5 +70,6 @@ export const getAPY = async () => {
 		return Number(APY);
 	} catch (err) {
 		console.log(err);
+        return 0;
 	}
 };

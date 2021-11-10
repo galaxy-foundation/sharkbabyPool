@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
 	return (
 		<UseWalletProvider
-			chainId={4002}
+			chainId={56}
 			connectors={{
 				// This is how connectors get configured
 				portis: { dAppId: "sharkbaby" },

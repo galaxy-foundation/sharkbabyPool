@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
-import contracts from "./4002.json";
+import contracts from "./56.json";
 
-const rpc = "https://rpc.testnet.fantom.network";
+const rpc = "https://bsc-dataseed4.binance.org/";
 // const chainid = process.env.REACT_APP_CHAIN_ID;
 
 const provider = new ethers.providers.JsonRpcProvider(rpc);
